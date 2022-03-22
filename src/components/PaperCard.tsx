@@ -22,9 +22,6 @@ export const PaperCard: VFC<Props> = memo((props) => {
   const navigate = useNavigate();
   return (
     <Box
-      bg="yellow.50"
-      borderRadius="xl"
-      shadow="md"
       w={{ base: "3xs", md: "2xs" }}
       h={{ base: "2xs", md: "xs" }}
       onClick={() => {
