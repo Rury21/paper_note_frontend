@@ -112,7 +112,7 @@ export const AddPaperModal: VFC<Props> = memo((props) => {
             <Switch onChange={(e) => setArxivSearch(e.target.checked)} />
           </Flex>
 
-          <ModalBody pb={6}>
+          <ModalBody pb={{ base: 4, md: 6, lg: 8 }}>
             <FormControl>
               <FormLabel>Title</FormLabel>
               <Input

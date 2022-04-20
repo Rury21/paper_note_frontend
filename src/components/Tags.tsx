@@ -81,7 +81,7 @@ export const Tags: VFC<Props> = memo((props) => {
             {props.paper.tags?.map((tag, i) => (
               <Box key={i}>
                 <Tag bg="red.600" borderRadius="xl" variant="solid" my={1}>
-                  <TagLabel>{tag}</TagLabel>
+                  <TagLabel fontSize={{ base: "xs", md: "sm" }}>{tag}</TagLabel>
                   <TagCloseButton
                     _focus={{ boxShadow: "none" }}
                     onClick={() => handleDeleteTag(tag)}
@@ -108,7 +108,7 @@ export const Tags: VFC<Props> = memo((props) => {
                   navigate(`../${tag}`);
                 }}
               >
-                <TagLabel>{tag}</TagLabel>
+                <TagLabel fontSize={{ base: "xs", md: "sm" }}>{tag}</TagLabel>
               </Tag>
             </Box>
           ))}

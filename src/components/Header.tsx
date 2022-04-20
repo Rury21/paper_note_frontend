@@ -1,5 +1,5 @@
 import { Box, Flex, Heading } from "@chakra-ui/layout";
-import { Icon, VStack } from "@chakra-ui/react";
+import { Icon } from "@chakra-ui/react";
 import { memo, VFC } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
@@ -7,17 +7,19 @@ export const Header: VFC = memo(() => {
   const navigate = useNavigate();
 
   return (
-    <VStack>
+    <Flex justify="center">
       <Flex
-        p={2}
+        as="nav"
+        p={{ base: 1, md: 2, lg: 3 }}
         bg="gray.900"
+        align="center"
         w="full"
         position="fixed"
-        shadow="lg"
+        shadow={{ base: "md", md: "lg", lg: "xl" }}
         zIndex="1"
       >
         <Flex
-          ml={8}
+          ml={{ base: 2, md: 5, lg: 8 }}
           _hover={{
             cursor: "pointer",
           }}
@@ -36,9 +38,9 @@ export const Header: VFC = memo(() => {
           </Heading>
         </Flex>
       </Flex>
-      <Box pt={12}>
+      <Box pt={{ base: 10, md: 12, lg: 14 }}>
         <Outlet />
       </Box>
-    </VStack>
+    </Flex>
   );
 });

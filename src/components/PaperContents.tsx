@@ -55,7 +55,7 @@ export const PaperContents: VFC<Props> = memo((props) => {
       <Box
         mt={8}
         p={4}
-        w={{ base: "lg", md: "3xl", lg: "5xl" }}
+        w={{ base: "sm", md: "xl", lg: "3xl" }}
         bg="gray.50"
         borderRadius="xl"
         shadow="5px 5px 15px black"
@@ -107,7 +107,7 @@ export const PaperContents: VFC<Props> = memo((props) => {
                 placeholder="Title"
                 name="title"
                 h={12}
-                fontSize="2xl"
+                fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
                 fontWeight="bold"
                 color="gray.800"
                 value={paper.title || ""}
@@ -135,7 +135,7 @@ export const PaperContents: VFC<Props> = memo((props) => {
                 onChange={handleChangePaper}
               />
               <Box textAlign="center" pt={4} w="full">
-                <Heading fontSize="lg">Abstract</Heading>
+                <Heading fontSize={{ base: "md", md: "lg" }}>Abstract</Heading>
 
                 <Textarea
                   placeholder="Abstract"
@@ -144,6 +144,7 @@ export const PaperContents: VFC<Props> = memo((props) => {
                   m={4}
                   w="full"
                   h="3xs"
+                  fontSize={{ base: "sm", md: "md" }}
                   size="md"
                   value={paper.abstract || ""}
                   onChange={handleChangePaper}
@@ -159,17 +160,18 @@ export const PaperContents: VFC<Props> = memo((props) => {
               <Heading
                 w="full"
                 mb={4}
-                noOfLines={{ base: 2, md: 3 }}
-                fontSize={{ base: "3xl", md: "4xl" }}
+                fontSize={{ base: "xl", md: "2xl", lg: "3xl" }}
               >
                 {props.paper.title}
               </Heading>
               <Box>{props.paper.year}</Box>
               <Link href={props.paper.url}>{props.paper.url}</Link>
               <Box pt={4}>
-                <Heading fontSize="lg">Abstract</Heading>
+                <Heading fontSize={{ base: "md", md: "lg" }}>Abstract</Heading>
 
-                <Box m={4}>{props.paper.abstract}</Box>
+                <Box m={4} fontSize={{ base: "sm", md: "md" }}>
+                  {props.paper.abstract}
+                </Box>
               </Box>
             </VStack>
           )}

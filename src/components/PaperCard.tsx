@@ -28,7 +28,7 @@ export const PaperCard: VFC<Props> = memo((props) => {
         navigate(`../paper/${props.paper.id}`);
       }}
     >
-      <VStack m={{ base: 1, md: 3 }}>
+      <VStack m={{ base: 2, md: 3 }}>
         {props.isEditing && props.handleDelete ? (
           <IconButton
             aria-label="Don't Save Contents"
@@ -66,7 +66,7 @@ export const PaperCard: VFC<Props> = memo((props) => {
         <Box textAlign="center" noOfLines={{ base: 2, md: 3 }}>
           {props.paper.tags?.map((tag, i) => (
             <Tag m={1} key={i} bg="red.900" borderRadius="xl" variant="solid">
-              <TagLabel>{tag}</TagLabel>
+              <TagLabel fontSize={{ base: "xs", md: "sm" }}>{tag}</TagLabel>
             </Tag>
           ))}
         </Box>

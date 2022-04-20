@@ -1,4 +1,4 @@
-import { Spinner, VStack } from "@chakra-ui/react";
+import { Box, Spinner, VStack } from "@chakra-ui/react";
 import { VFC } from "react";
 import { useParams } from "react-router-dom";
 import { usePaper } from "../hooks/usePaper";
@@ -13,11 +13,11 @@ export const Paper: VFC = () => {
   const { data: paper, isLoading } = usePaper(params.id as string);
 
   return (
-    <VStack align="center">
+    <VStack>
       {isLoading ? (
         <Spinner mt={8} />
       ) : (
-        <>{paper ? <PaperContents paper={paper} /> : <></>}</>
+        <Box>{paper ? <PaperContents paper={paper} /> : <></>}</Box>
       )}
     </VStack>
   );
