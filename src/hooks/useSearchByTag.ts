@@ -5,7 +5,7 @@ import { Paper } from "../types";
 export const useSearchByTag = (tag: string) => {
   const getPaper = async (tag: string) => {
     const { data } = await axios.get<Paper[]>(
-      `https://paper-note-backend.herokuapp.com/api/papers/${tag}`
+      `https://paper-note-backend.herokuapp.com/api/search/tag/${tag}`
     );
     return data;
   };

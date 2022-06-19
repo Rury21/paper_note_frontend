@@ -105,7 +105,7 @@ export const Tags: VFC<Props> = memo((props) => {
                   bg: "red.800",
                 }}
                 onClick={() => {
-                  navigate(`../${tag}`);
+                  navigate(`../search/tag/${tag}`);
                 }}
               >
                 <TagLabel fontSize={{ base: "xs", md: "sm" }}>{tag}</TagLabel>

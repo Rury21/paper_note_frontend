@@ -9,22 +9,22 @@ import {
 } from "@chakra-ui/react";
 import { VFC } from "react";
 import { useParams } from "react-router-dom";
-import { useSearchByTag } from "../hooks/useSearchByTag";
+import { useSearchByTitle } from "../hooks/useSearchByTitle";
 import { PaperCard } from "./PaperCard";
 
 type PathParams = {
-  tag: string;
+  title: string;
 };
-export const SearchByTag: VFC = () => {
+export const SearchBytitle: VFC = () => {
   const params = useParams<PathParams>();
 
-  const { data: papers, isLoading } = useSearchByTag(params.tag as string);
+  const { data: papers, isLoading } = useSearchByTitle(params.title as string);
 
   return (
     <VStack>
       <Flex m={8}>
         <Text color="gray.50" fontWeight="bold" fontSize="2xl">
-          Tag name : {params.tag}
+          Search By Title Results For : {params.title}
         </Text>
       </Flex>
       {isLoading ? (

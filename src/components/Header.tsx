@@ -1,11 +1,16 @@
+import { SearchIcon } from "@chakra-ui/icons";
 import { Box, Flex, Heading } from "@chakra-ui/layout";
-import { Icon } from "@chakra-ui/react";
-import { memo, VFC } from "react";
+import { Icon, IconButton, Input } from "@chakra-ui/react";
+import { ChangeEvent, memo, useState, VFC } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 export const Header: VFC = memo(() => {
   const navigate = useNavigate();
+  const [title, setTitle] = useState("");
 
+  const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  };
   return (
     <Flex justify="center">
       <Flex
@@ -36,6 +41,32 @@ export const Header: VFC = memo(() => {
           <Heading ml={2} color="gray.50" fontWeight="bold" fontSize="3xl">
             Paper Note
           </Heading>
+        </Flex>
+        <Flex ml={5}>
+          <Input
+            bg="gray.700"
+            color="gray.50"
+            borderColor="gray.500"
+            _hover={{ borderColor: "default" }}
+            _focus={{ boxShadow: "none" }}
+            onChange={handleChangeTitle}
+          />
+          <IconButton
+            aria-label="Search"
+            fontSize="20px"
+            icon={<SearchIcon />}
+            bg="pink.500"
+            color="gray.50"
+            _hover={{
+              bg: "pink.400",
+            }}
+            _active={{
+              bg: "pink.300",
+            }}
+            onClick={() => {
+              navigate(`../search/title/${title}`);
+            }}
+          />
         </Flex>
       </Flex>
       <Box pt={{ base: 10, md: 12, lg: 14 }}>
