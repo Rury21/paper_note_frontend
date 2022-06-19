@@ -7,9 +7,8 @@ import {
   List,
   ListItem,
   ScaleFade,
+  SimpleGrid,
   VStack,
-  Wrap,
-  WrapItem,
 } from "@chakra-ui/react";
 import { ChangeEvent, memo, useState, VFC } from "react";
 import { Paper } from ".././types";
@@ -126,11 +125,16 @@ export const References: VFC<Props> = memo((props) => {
       ) : (
         <></>
       )}
-      <Wrap spacing={4} justify="center">
+      <SimpleGrid
+        px={4}
+        spacing={4}
+        justify="center"
+        columns={{ base: 1, md: 2, lg: 3 }}
+      >
         {props.paper.references?.map((id, i) => (
           <ScaleFade key={i} initialScale={0.9} in={true}>
             {papers?.find((paper) => paper.id === id) && (
-              <WrapItem
+              <Flex
                 bg="yellow.50"
                 borderRadius="xl"
                 shadow="md"
@@ -145,11 +149,11 @@ export const References: VFC<Props> = memo((props) => {
                   isEditing={props.isEditing}
                   handleDelete={handleDeleteReference}
                 />
-              </WrapItem>
+              </Flex>
             )}
           </ScaleFade>
         ))}
-      </Wrap>
+      </SimpleGrid>
     </VStack>
   );
 });

@@ -22,13 +22,13 @@ export const PaperCard: VFC<Props> = memo((props) => {
   const navigate = useNavigate();
   return (
     <Box
-      w={{ base: "3xs", md: "2xs" }}
-      h={{ base: "2xs", md: "xs" }}
+      w={{ base: "3xs", lg: "2xs" }}
+      h={{ base: "2xs", lg: "xs" }}
       onClick={() => {
         navigate(`../paper/${props.paper.id}`);
       }}
     >
-      <VStack m={{ base: 2, md: 3 }}>
+      <VStack m={{ base: 2, lg: 3 }}>
         {props.isEditing && props.handleDelete ? (
           <IconButton
             aria-label="Don't Save Contents"
@@ -53,9 +53,9 @@ export const PaperCard: VFC<Props> = memo((props) => {
         <Heading
           w="full"
           px={1}
-          noOfLines={{ base: 3, md: 4 }}
+          noOfLines={{ base: 3, lg: 4 }}
           textAlign="center"
-          fontSize={{ base: "xl", md: "2xl" }}
+          fontSize={{ base: "xl", lg: "2xl" }}
         >
           {props.paper.title}
         </Heading>

@@ -1,11 +1,10 @@
 import {
   Flex,
   ScaleFade,
+  SimpleGrid,
   Spinner,
   Text,
   VStack,
-  Wrap,
-  WrapItem,
 } from "@chakra-ui/react";
 import { VFC } from "react";
 import { useParams } from "react-router-dom";
@@ -28,28 +27,30 @@ export const SearchByTag: VFC = () => {
         </Text>
       </Flex>
       {isLoading ? (
-        <Spinner mt={8} />
+        <Spinner m={8} />
       ) : (
-        <Wrap m={8} spacing={4} justify="center">
-          {papers
-            ?.slice()
-            .reverse()
-            .map((paper) => (
-              <ScaleFade key={paper.id} initialScale={0.9} in={true}>
-                <WrapItem
-                  shadow="0 2px 5px black"
-                  bg="yellow.50"
-                  borderRadius="xl"
-                  _hover={{
-                    cursor: "pointer",
-                    shadow: "0 8px 15px black",
-                  }}
-                >
-                  <PaperCard paper={paper} key={paper.id} isEditing={false} />
-                </WrapItem>
-              </ScaleFade>
-            ))}
-        </Wrap>
+        <SimpleGrid
+          px={8}
+          spacing={4}
+          justify="center"
+          columns={{ base: 1, sm: 2, md: 3, lg: 4 }}
+        >
+          {papers?.map((paper) => (
+            <ScaleFade key={paper.id} initialScale={0.9} in={true}>
+              <Flex
+                shadow="0 2px 5px black"
+                bg="yellow.50"
+                borderRadius="xl"
+                _hover={{
+                  cursor: "pointer",
+                  shadow: "0 8px 15px black",
+                }}
+              >
+                <PaperCard paper={paper} key={paper.id} isEditing={false} />
+              </Flex>
+            </ScaleFade>
+          ))}
+        </SimpleGrid>
       )}
     </VStack>
   );

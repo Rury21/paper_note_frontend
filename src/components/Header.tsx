@@ -15,16 +15,17 @@ export const Header: VFC = memo(() => {
     <Flex justify="center">
       <Flex
         as="nav"
-        p={{ base: 1, md: 2, lg: 3 }}
+        p={{ base: 1, md: 3 }}
         bg="gray.900"
         align="center"
         w="full"
         position="fixed"
-        shadow={{ base: "md", md: "lg", lg: "xl" }}
+        shadow={{ base: "md", md: "lg" }}
+        justify="space-between"
         zIndex="1"
       >
         <Flex
-          ml={{ base: 2, md: 5, lg: 8 }}
+          ml={{ base: 2, md: 6 }}
           _hover={{
             cursor: "pointer",
           }}
@@ -32,13 +33,18 @@ export const Header: VFC = memo(() => {
             navigate("/");
           }}
         >
-          <Icon viewBox="0 0 100 100" boxSize="10">
+          <Icon viewBox="0 0 100 100" boxSize={{ base: "8", md: "10" }}>
             <path
               fill="#D53F8C"
               d="M43,41.4L25,5.3l-25,45l21.3,38.4c2.3,4.1,6.5,6.6,11,6.6H75l25-45H57.1C51.2,50.3,45.8,46.9,43,41.4z"
             />
           </Icon>
-          <Heading ml={2} color="gray.50" fontWeight="bold" fontSize="3xl">
+          <Heading
+            ml={2}
+            color="gray.50"
+            fontWeight="bold"
+            fontSize={{ base: "md", md: "3xl" }}
+          >
             Paper Note
           </Heading>
         </Flex>
