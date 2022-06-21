@@ -68,7 +68,7 @@ export const Papers: VFC = () => {
         >
           LATEST
         </Button>
-        <Text color="gray.50">Year:</Text>
+        <Text color="gray.50">Published Year:</Text>
         <IconButton
           aria-label="Sort Paper"
           icon={<ArrowUpIcon />}
