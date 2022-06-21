@@ -23,7 +23,7 @@ type Props = {
 
 export const References: VFC<Props> = memo((props) => {
   const [searchField, setSearchField] = useState("");
-  const { data: papers } = useAllPapers();
+  const { data: papers } = useAllPapers("new");
 
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchField(e.target.value);

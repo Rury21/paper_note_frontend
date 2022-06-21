@@ -2,17 +2,18 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { Paper } from "../types";
 
-export const useAllPapers = () => {
-  const getPapers = async () => {
+export const useAllPapers = (sort: string) => {
+  const getPapers = async (sort: string) => {
     const { data } = await axios.get<Paper[]>(
-      "https://paper-note-backend.herokuapp.com/api/papers"
+      `https://paper-note-backend.herokuapp.com/api/papers/?sort=${sort}`
     );
+
     return data;
   };
 
   return useQuery<Paper[], Error>({
-    queryKey: "papers",
-    queryFn: getPapers,
+    queryKey: ["papers", sort],
+    queryFn: () => getPapers(sort),
     staleTime: Infinity,
   });
 };

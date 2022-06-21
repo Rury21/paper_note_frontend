@@ -1,9 +1,13 @@
+import { AddIcon, ArrowDownIcon, ArrowUpIcon } from "@chakra-ui/icons";
 import {
   Button,
   Flex,
+  HStack,
+  IconButton,
   ScaleFade,
   SimpleGrid,
   Spinner,
+  Text,
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
@@ -15,25 +19,30 @@ import { Pagination } from "./Pagination";
 import { PaperCard } from "./PaperCard";
 
 export const Papers: VFC = () => {
-  const { data: papers, isLoading } = useAllPapers();
-
+  const [sort, setSort] = useState<"LATEST" | "ASC" | "DESC">("LATEST");
+  const { data: papers, isLoading } = useAllPapers(sort);
+  const [cp, setCp] = useState(1);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [page, setPage] = useState<Paper[]>();
 
   const page_size = 12;
-  const handlePaginate = (page: number) => {
-    setPage(papers?.slice((page - 1) * page_size, page * page_size));
+  const handlePaginate = (p: number) => {
+    setPage(papers?.slice((p - 1) * page_size, p * page_size));
+    setCp(p);
   };
   useEffect(() => {
-    handlePaginate(1);
-  }, [papers]);
+    handlePaginate(cp);
+  }, [papers, sort]);
 
   return (
     <VStack spacing={8}>
-      <Flex mt={8}>
-        <AddPaperModal isOpen={isOpen} onClose={onClose} />
-        <Button
+      <AddPaperModal isOpen={isOpen} onClose={onClose} />
+      <HStack mt={8}>
+        <IconButton
+          aria-label="Add Paper"
+          icon={<AddIcon />}
           variant="outline"
+          mr={{ base: 4, md: 16 }}
           borderColor="pink.500"
           color="gray.50"
           _hover={{
@@ -42,10 +51,52 @@ export const Papers: VFC = () => {
             bg: "gray.600",
           }}
           onClick={onOpen}
+        />
+
+        <Text color="gray.50">Sort:</Text>
+        <Button
+          aria-label="Sort Paper"
+          variant="outline"
+          borderColor="pink.500"
+          color="gray.50"
+          _hover={{
+            cursor: "pointer",
+            borderColor: "pink.400",
+            bg: "gray.600",
+          }}
+          onClick={() => setSort("LATEST")}
         >
-          New
+          LATEST
         </Button>
-      </Flex>
+        <Text color="gray.50">Year:</Text>
+        <IconButton
+          aria-label="Sort Paper"
+          icon={<ArrowUpIcon />}
+          variant="outline"
+          borderColor="pink.500"
+          color="gray.50"
+          _hover={{
+            cursor: "pointer",
+            borderColor: "pink.400",
+            bg: "gray.600",
+          }}
+          onClick={() => setSort("ASC")}
+        />
+
+        <IconButton
+          aria-label="Sort Paper"
+          variant="outline"
+          icon={<ArrowDownIcon />}
+          borderColor="pink.500"
+          color="gray.50"
+          _hover={{
+            cursor: "pointer",
+            borderColor: "pink.400",
+            bg: "gray.600",
+          }}
+          onClick={() => setSort("DESC")}
+        />
+      </HStack>
       {isLoading ? (
         <Spinner m={8} />
       ) : (
@@ -75,6 +126,7 @@ export const Papers: VFC = () => {
       <Pagination
         size={papers?.length}
         per={page_size}
+        currentPage={cp}
         onChange={(e) => handlePaginate(e.page)}
       />
     </VStack>

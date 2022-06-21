@@ -4,13 +4,13 @@ import { useEffect, useRef, useState, VFC } from "react";
 type Props = {
   size: number | undefined;
   per: number;
+  currentPage: number;
   onChange: (e: { page: number }) => void;
 };
 
 export const Pagination: VFC<Props> = (props) => {
   const isFirstRender = useRef(true);
-  const [currentPage, setPage] = useState(1);
-  console.log();
+  const [currentPage, setPage] = useState(props.currentPage);
 
   useEffect(() => {
     if (isFirstRender.current) {
