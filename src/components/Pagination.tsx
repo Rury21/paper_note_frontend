@@ -51,11 +51,10 @@ export const Pagination: VFC<Props> = (props) => {
         <>
           {currentPage !== 1 && (
             <IconButton
-              aria-label="Save Contents"
+              aria-label="page forward"
               icon={<ChevronLeftIcon />}
               variant="outline"
               border="none"
-              size="xl"
               color="gray.50"
               _hover={{
                 cursor: "pointer",
@@ -77,7 +76,7 @@ export const Pagination: VFC<Props> = (props) => {
                 _hover={{
                   cursor: "pointer",
                   borderColor: "pink.400",
-                  bg: "gray.600",
+                  bg: "pink.400",
                 }}
                 onClick={() => handleMove(page)}
               >
@@ -102,7 +101,7 @@ export const Pagination: VFC<Props> = (props) => {
           })}
           {currentPage !== totalPage && (
             <IconButton
-              aria-label="Save Contents"
+              aria-label="page back"
               icon={<ChevronRightIcon />}
               variant="outline"
               border="none"

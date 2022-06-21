@@ -32,7 +32,7 @@ export const Papers: VFC = () => {
   };
   useEffect(() => {
     handlePaginate(cp);
-  }, [papers, sort]);
+  }, [papers]);
 
   return (
     <VStack spacing={8}>
